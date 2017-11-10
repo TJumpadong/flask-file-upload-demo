@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <input type="file" id="fileInput">
+    <button onclick="sendFile()">Predict</button>
+    <div id="myTarget"></div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      function sendFile() {
+        const data = new FormData();
+        data.append('title', 'hello');
+        data.append('file', document.getElementById('fileInput').files[0]);
+
+        axios({
+          method: 'post',
+          url: 'http://localhost:5000/demo',
+          data: data,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+          }
+        }).then(response => {
+          if (response.data) {
+            document.getElementById('myTarget').innerHTML = response.data.result;
+          }
+        }).catch(error => console.log(error));
+      }
+    </script>
+  </body>
+</html>
