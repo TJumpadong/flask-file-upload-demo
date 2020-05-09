@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+
+  webapp:
+    build:
+      context: ./webapp
+    ports:
+      - 8000:8000
+
+  server:
+    build:
+      context: ./server
+    ports:
+      - 5000:5000
