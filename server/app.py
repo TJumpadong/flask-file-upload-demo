@@ -15,7 +15,7 @@ def predict():
   # file input
   f = request.files['file']
   f.save('./uploads/' + secure_filename(f.filename))
-  
+
   result = 'hello';
   return jsonify({ 'result': result }), 201
 
